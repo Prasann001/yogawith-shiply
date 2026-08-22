@@ -63,10 +63,29 @@ h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;color:var(--moss);letter-s
 .hero-sub{max-width:440px;color:var(--moss-soft);font-size:1.02rem}
 
 .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;height:380px}
-.breath-orb{width:140px;height:140px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,rgba(198,166,100,.5),var(--clay-soft) 55%,var(--moss) 120%);
-  box-shadow:0 0 60px rgba(182,115,88,.35);
-  animation:breathe 8s ease-in-out infinite}
+.breath-orb{
+  width:140px;height:140px;border-radius:50%;position:relative;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,244,220,.9), transparent 35%),
+    radial-gradient(circle at 40% 35%, rgba(198,166,100,.65), transparent 55%),
+    radial-gradient(circle at 55% 60%, var(--clay-soft) 0%, var(--clay) 45%, var(--moss) 100%);
+  box-shadow:
+    0 0 40px rgba(198,166,100,.5),
+    0 0 90px rgba(182,115,88,.35),
+    inset -10px -14px 30px rgba(44,64,43,.4),
+    inset 8px 10px 20px rgba(255,244,220,.35);
+  animation:breathe 8s ease-in-out infinite;
+  filter:blur(0.3px)}
+
+.breath-orb::before{
+  content:'';position:absolute;inset:-30px;border-radius:50%;
+  background:radial-gradient(circle,rgba(198,166,100,.18),transparent 70%);
+  filter:blur(14px);animation:breathe 8s ease-in-out infinite;z-index:-1}
+
+@keyframes breathe{
+  0%,100%{transform:scale(.82);filter:brightness(.92)}
+  50%{transform:scale(1.18);filter:brightness(1.08)}
+}
 @keyframes breathe{0%,100%{transform:scale(.82)}50%{transform:scale(1.18)}}
 .breath-ring{position:absolute;border-radius:50%;border:1px solid rgba(44,64,43,.18)}
 .r2{width:220px;height:220px;animation:breathe 8s ease-in-out infinite}
